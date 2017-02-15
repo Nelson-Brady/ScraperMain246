@@ -2,7 +2,8 @@ package com.brady.scrapermain;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-//The main Activity is great!
+//The main Activity is not great!
+//main activitiy sucks
 public class MainActivity extends AppCompatActivity {
 
     @Override
