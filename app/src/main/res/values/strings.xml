@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ScraperMain</string>
+    <string name="goes_address">GOES Address</string>
+    <string name="input_activity">New Input</string>
 </resources>
