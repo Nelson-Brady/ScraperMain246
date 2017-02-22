@@ -17,6 +17,7 @@ public class ExampleUnitTest {
 
     /*@Test
     public void AJAX_isCorrect() throws Exception {
+        //Write test code to test our data-receiving here
     }
 
     @Test
