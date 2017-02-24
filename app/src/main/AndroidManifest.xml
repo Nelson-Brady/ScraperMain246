@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".inputcode"></activity>
+        <activity android:name=".inputcode" />
+        <activity android:name=".DisplayCode"></activity>
     </application>
 
 </manifest>

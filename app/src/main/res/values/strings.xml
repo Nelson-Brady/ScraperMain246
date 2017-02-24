@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">ScraperMain</string>
-    <string name="goes_address">GOES Address</string>
+    <string name="DCP_address">DCP/GOES Address</string>
+    <string name="Until_Time">Until Time</string>
+    <string name="Since_Time">Since Time</string>
     <string name="input_activity">New Input</string>
+    <string name="channel">Channel</string>
 </resources>

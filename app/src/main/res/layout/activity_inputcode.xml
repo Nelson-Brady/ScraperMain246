@@ -15,10 +15,52 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
+        android:hint="@string/Since_Time"
         android:ems="10"
+        android:id="@+id/editText3"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/Until_Time"
+        android:ems="10"
+        android:id="@+id/editText2"
+        android:layout_below="@+id/editText3"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
         android:id="@+id/editText"
-        android:hint="@string/goes_address"/>
+        android:hint="@string/DCP_address"
+        android:layout_below="@+id/editText2"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="59dp"
+        android:onClick="checkForm"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/channel"
+        android:ems="10"
+        android:layout_below="@+id/editText"
+        android:layout_alignEnd="@+id/button"
+        android:id="@+id/editText5" />
+
 
 </RelativeLayout>
