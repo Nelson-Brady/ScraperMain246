@@ -20,7 +20,7 @@
         android:id="@+id/floatingActionButton"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:onClick="newcode"
+        android:onClick="newCode"
         />
 
     <ListView

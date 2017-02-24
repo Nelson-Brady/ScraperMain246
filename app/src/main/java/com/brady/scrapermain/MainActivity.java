@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void newcode(View view) {
+    public void newCode(View view) {
 
         Intent intent = new Intent(this, inputcode.class);
         startActivity(intent);
