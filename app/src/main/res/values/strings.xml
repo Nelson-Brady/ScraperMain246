@@ -5,4 +5,7 @@
     <string name="Since_Time">Since Time</string>
     <string name="input_activity">New Input</string>
     <string name="channel">Channel</string>
+    <string name="new_String">Click For New Search</string>
+    <string name="paste_Data">Paste Data</string>
+    <string name="enter_Data">Enter data here</string>
 </resources>
