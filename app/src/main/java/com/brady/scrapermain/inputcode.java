@@ -6,8 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.EditText;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class inputcode extends AppCompatActivity {
 
@@ -49,16 +56,49 @@ public class inputcode extends AppCompatActivity {
         intent.putExtra("until", untilTime);
         intent.putExtra("geos", GeosAddress);
         intent.putExtra("chan", channel);
+        parseInfo();
 
         startActivity(intent);
         }
 
+
+    // this function parses the header information
     void parseInfo() {
-        String Test = "DD23122617062152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
+        String Test = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@GX@GY@G\\W@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
+
+        String Address = Test.substring(0, 8);
+
+        String year = Test.substring(8, 10);
+        year = "20" + year;
+        String JulianDay = Test.substring(10, 13);
+
+        JulianDay = year + JulianDay;
+        String Date = JulianToDate(JulianDay);
+
+
+
+
 
 
 
 
     }
+
+    //this function is used by parseInfo and it converts a julian day to a readable date.
+    String JulianToDate(String julian) {
+        String dateStr = julian;
+        Calendar cal  = new GregorianCalendar();
+        cal.set(Calendar.YEAR,Integer.parseInt(dateStr.substring(0,4)));
+        cal.set(Calendar.DAY_OF_YEAR,Integer.parseInt(dateStr.substring(4)));
+        Date parsedDate  = cal.getTime();
+
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateToString = formatter.format(parsedDate);
+
+        return dateToString;
+
+    }
+
+
 
 }
