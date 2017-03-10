@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class DisplayCode extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -29,8 +31,14 @@ public class DisplayCode extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(mDataset);
+        //mAdapter = new MyAdapter(mDataset);
+        ArrayList<String> mDataset = new ArrayList<>();
+        mDataset.add("HelloTest");
+
+
+
         recyclerView.setAdapter(mAdapter);
+
 
         Intent intent = getIntent();
 
