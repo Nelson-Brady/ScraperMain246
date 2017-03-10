@@ -31,8 +31,8 @@ public class DisplayCode extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        //mAdapter = new MyAdapter(mDataset);
         ArrayList<String> mDataset = new ArrayList<>();
+        mAdapter = new MyAdapter(mDataset);
         mDataset.add("HelloTest");
 
 
