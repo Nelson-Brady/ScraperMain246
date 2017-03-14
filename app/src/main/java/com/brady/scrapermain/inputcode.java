@@ -64,7 +64,7 @@ public class inputcode extends AppCompatActivity {
 
     // this function parses the header information
     void parseInfo() {
-        String Test = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@GX@GY@G\\W@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
+        String Test = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
 
         String Address = Test.substring(0, 8);
 
@@ -76,13 +76,12 @@ public class inputcode extends AppCompatActivity {
         String Date = JulianToDate(JulianDay);
 
 
-
-
-
-
+        //Working on decoding data
+        String Data = decodeData(Test);
 
 
     }
+
 
     //this function is used by parseInfo and it converts a julian day to a readable date.
     String JulianToDate(String julian) {
@@ -96,6 +95,39 @@ public class inputcode extends AppCompatActivity {
         String dateToString = formatter.format(parsedDate);
 
         return dateToString;
+
+    }
+
+
+    //working on decoding data
+    String decodeData(String Test) {
+        //Determine how many @'s
+        int count = Test.length() - Test.replace("@", "").length();
+
+        //Split string at each @ to get each piece of data
+        String[] data = new String[count];
+        int i;
+        for(i = 0; i <= count; i ++) {
+            data = Test.split("@");
+        }
+
+        //Put the @ back in that split removes
+        for(i = 1; i<= count; i++) {
+            data[i] = "@" + data[i];
+            System.out.println(data[i]);
+        }
+
+        //Determine how many bits for each data piece
+        String dataOnly = Test.substring(41);
+        int dataSize = dataOnly.length() / count;
+        System.out.println(dataSize);
+
+
+        //How to decode each piece of data???
+        for(i=0; i <=count; i++){
+
+
+        }
 
     }
 
