@@ -1,5 +1,6 @@
 package com.brady.scrapermain;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 
 import java.io.BufferedReader;
@@ -25,6 +26,13 @@ import javax.net.ssl.HttpsURLConnection;
 public class receiveData extends AsyncTask<URL, Integer, Long> {
 
     String response = "";
+    String SinceTime;
+    String GeosAddress;
+
+    receiveData(String since, String geos) {
+        SinceTime = since;
+        GeosAddress = geos;
+        }
 
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
         StringBuilder feedback = new StringBuilder();
@@ -46,8 +54,8 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
     public void getData() throws IOException {
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("DCPID","DD231226");
-        params.put("SINCE","5");
+        params.put("DCPID", GeosAddress);
+        params.put("SINCE", SinceTime);
 
         URL url = new URL("https://eddn.usgs.gov/cgi-bin/fieldtest.pl");
         HttpURLConnection client = null;
@@ -104,6 +112,8 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
         System.out.println("Downloaded " + result + " bytes");
         // This is just printing it to the console for now.
         // We can pass the string elsewhere and decode it.
-        System.out.println(response);
+        //System.out.println(response);
+        DisplayCode display = new DisplayCode();
+        display.displayData(response);
     }
 }

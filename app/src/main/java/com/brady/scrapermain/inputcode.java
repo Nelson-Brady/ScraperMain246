@@ -46,10 +46,10 @@ public class inputcode extends AppCompatActivity {
         EditText Geos = (EditText) findViewById(R.id.editText);
         EditText chan = (EditText) findViewById(R.id.editText5);
 
-        SinceTime = Since.getText().toString();
-        untilTime = until.getText().toString();
+        SinceTime   = Since.getText().toString();
+        untilTime   = until.getText().toString();
         GeosAddress = Geos.getText().toString();
-        channel = chan.getText().toString();
+        channel     = chan.getText().toString();
 
 
         Intent intent = new Intent(this, DisplayCode.class);
@@ -65,7 +65,7 @@ public class inputcode extends AppCompatActivity {
         // This will call receiveData() as a thread, POST the data
         // and then receive the resulting code.
         URL url = new URL("https://eddn.usgs.gov/cgi-bin/fieldtest.pl");
-        new receiveData().execute(url);
+        new receiveData(SinceTime, GeosAddress).execute(url);
         }
 
 
