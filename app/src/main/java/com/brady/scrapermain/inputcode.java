@@ -10,6 +10,8 @@ import android.text.format.DateFormat;
 import android.view.View;
 import android.widget.EditText;
 
+import java.io.IOException;
+import java.net.URL;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,7 +39,7 @@ public class inputcode extends AppCompatActivity {
     }
 // This function validates the form when search is pressed
 
-    void checkForm(View view) {
+    void checkForm(View view) throws IOException {
 
         EditText Since = (EditText) findViewById(R.id.editText3);
         EditText until = (EditText) findViewById(R.id.editText2);
@@ -59,6 +61,11 @@ public class inputcode extends AppCompatActivity {
         parseInfo();
 
         startActivity(intent);
+
+        // This will call receiveData() as a thread, POST the data
+        // and then receive the resulting code.
+        URL url = new URL("https://eddn.usgs.gov/cgi-bin/fieldtest.pl");
+        new receiveData().execute(url);
         }
 
 
@@ -129,6 +136,8 @@ public class inputcode extends AppCompatActivity {
 
         }
 
+        // *DELETE LATER* it needed a return statement so I added this for now.
+        return Test;
     }
 
 

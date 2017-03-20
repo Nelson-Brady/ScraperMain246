@@ -32,8 +32,11 @@ public class DisplayCode extends AppCompatActivity {
 
         // specify an adapter (see also next example)
         ArrayList<String> mDataset = new ArrayList<>();
+        mDataset.add("HelloTest1");
+        mDataset.add("HelloTest2");
+        mDataset.add("HelloTest3");
+        mDataset.add("HelloTest4");
         mAdapter = new MyAdapter(mDataset);
-        mDataset.add("HelloTest");
 
 
 
