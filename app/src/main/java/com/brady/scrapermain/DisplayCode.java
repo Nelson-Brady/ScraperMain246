@@ -51,8 +51,8 @@ public class DisplayCode extends AppCompatActivity {
         textView.setTextSize(30);
         textView.setText(since);
 
-        ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_code);
-        layout.addView(textView);
+        //ViewGroup layout = (ViewGroup) findViewById(R.id.activity_display_code);
+        //layout.addView(textView);
     }
 
     void displayData(String data) {
