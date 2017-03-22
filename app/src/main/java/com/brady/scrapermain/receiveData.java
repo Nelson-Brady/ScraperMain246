@@ -105,11 +105,16 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+
+        // This counts how many bytes were downloaded
+        final byte[] result = response.getBytes();
+        Long numOfBytes = Long.valueOf(result.length);
+        return numOfBytes;
     }
 
     protected void onPostExecute(Long result) {
         System.out.println("Downloaded " + result + " bytes");
+        System.out.println(response);
         // This is just printing it to the console for now.
         // We can pass the string elsewhere and decode it.
         inputcode input = new inputcode();
