@@ -112,8 +112,7 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
         System.out.println("Downloaded " + result + " bytes");
         // This is just printing it to the console for now.
         // We can pass the string elsewhere and decode it.
-        //System.out.println(response);
-        DisplayCode display = new DisplayCode();
-        display.displayData(response);
+        inputcode input = new inputcode();
+        input.parseInfo(response);
     }
 }
