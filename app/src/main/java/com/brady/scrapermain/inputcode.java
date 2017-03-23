@@ -70,20 +70,23 @@ public class inputcode extends AppCompatActivity {
 
     // this function parses the header information
     void parseInfo(String data) {
-        String Test = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
+        //String Test = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
 
-        String Address = Test.substring(0, 8);
 
-        String year = Test.substring(8, 10);
+
+
+        String Address = data.substring(0, 8);
+
+        String year = data.substring(8, 10);
         year = "20" + year;
-        String JulianDay = Test.substring(10, 13);
+        String JulianDay = data.substring(10, 13);
 
         JulianDay = year + JulianDay;
         String Date = JulianToDate(JulianDay);
 
 
         //Working on decoding data
-        String Data = decodeData(Test);
+        String Data = decodeData(data);
 
 
     }
