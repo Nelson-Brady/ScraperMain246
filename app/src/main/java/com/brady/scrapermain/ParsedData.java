@@ -1,7 +1,7 @@
 package com.brady.scrapermain;
 
 /**
- * Created by spencer on 3/22/17.
+ * Created by Sspencer on 3/22/17.
  */
 
 public class ParsedData {

@@ -133,13 +133,57 @@ public class inputcode extends AppCompatActivity {
 
 
         //How to decode each piece of data???
-        for(i=0; i <=count; i++){
+        String Data = "";
+        for (i = 1; i <= count; i++) {
+
+            int value = 0;
+            //Data = "";
+
+            String[] word = data[i].split("");
+
+            for (int j = word.length - 1; j > 0; j--) {
+
+                int index = word.length - j;
+
+
+                value += lookUp(word[j], index - 1);
+
+            }
+            Data += value + " ";
 
 
         }
+        return Data;
+
+    }
+
+    int lookUp(String s1, int index) {
+
+        int ascii = s1.charAt(0);
+        //int newAsc = (ascii & 0x3f);
+
+        int value = 0;
+
+        if (index == 0){
+            value = (ascii & 0x3f);
+        }
+        else if (index == 1) {
+            value = (ascii & 0x3f);
+            value *= 64;
+        }
+        else if (index == 2) {
+            value = (ascii & 0x3f);
+            value *= 4096;
+        }
+        else {
+            value = (ascii & 0x3f);
+            value *= 262144;
+
+
+        }
+        return value;
 
         // *DELETE LATER* it needed a return statement so I added this for now.
-        return Test;
     }
 
 
