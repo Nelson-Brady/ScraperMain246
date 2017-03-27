@@ -24,10 +24,10 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
+        app.layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app.layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
-        />
+        android:layout_marginTop="100dp" />
         <!--android:scrollbars="vertical"  -->
 
         <android.support.design.widget.AppBarLayout

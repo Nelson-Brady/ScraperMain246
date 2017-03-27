@@ -118,6 +118,6 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
         // This is just printing it to the console for now.
         // We can pass the string elsewhere and decode it.
         inputcode input = new inputcode();
-        input.parseInfo(response);
+        //input.parseInfo(response);
     }
 }

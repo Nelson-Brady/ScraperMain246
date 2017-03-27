@@ -54,9 +54,9 @@ public class inputcode extends AppCompatActivity {
 
         Intent intent = new Intent(this, DisplayCode.class);
 
-        intent.putExtra("Since", SinceTime);
+        //intent.putExtra("Since", SinceTime);
         //intent.putExtra("until", untilTime);
-        intent.putExtra("geos", GeosAddress);
+        //intent.putExtra("geos", GeosAddress);
         //intent.putExtra("chan", channel);
 
         // This will call receiveData() as a thread, POST the data
@@ -65,14 +65,13 @@ public class inputcode extends AppCompatActivity {
         new receiveData(SinceTime, GeosAddress).execute(url);
 
         startActivity(intent);
+
         }
 
 
     // this function parses the header information
     void parseInfo(String data) {
         //String Test = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
-
-
 
 
         String Address = data.substring(0, 8);
@@ -182,8 +181,6 @@ public class inputcode extends AppCompatActivity {
 
         }
         return value;
-
-        // *DELETE LATER* it needed a return statement so I added this for now.
     }
 
 
