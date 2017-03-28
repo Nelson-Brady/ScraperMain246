@@ -84,10 +84,13 @@ public class inputcode extends AppCompatActivity {
     /*
     // this function parses the header information
     void parseInfo(String data) {
-        //String Test = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
+
+        Intent intent = new Intent(this, DisplayCode.class);
+        startActivity(intent);
 
 
-        String Address = data.substring(0, 8);
+        //data = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@/GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
+        /*String Address = data.substring(0, 8);
 
         String year = data.substring(8, 10);
         year = "20" + year;
@@ -98,7 +101,9 @@ public class inputcode extends AppCompatActivity {
 
 
         //Working on decoding data
-        String Data = decodeData(data);
+        //String Data = decodeData(data);
+
+
 
 
     }
@@ -195,7 +200,8 @@ public class inputcode extends AppCompatActivity {
         }
         return value;
     }
-
 */
+
+
 
 }

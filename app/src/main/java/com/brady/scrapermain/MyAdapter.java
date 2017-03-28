@@ -40,7 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             "Item Seven",
             "Item Eight"};
 
-    private int[] images = {R.drawable.creeper,
+    /*private int[] images = {R.drawable.creeper,
             R.drawable.creeper,
             R.drawable.creeper,
             R.drawable.creeper,
@@ -48,6 +48,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             R.drawable.creeper,
             R.drawable.creeper,
             R.drawable.creeper};
+            */
 
 
     // Provide a reference to the views for each data item
@@ -92,7 +93,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int i) {
         viewHolder.itemTitle.setText(titles[i]);
         viewHolder.itemDetail.setText(details[i]);
-        viewHolder.itemImage.setImageResource(images[i]);
+        //viewHolder.itemImage.setImageResource(images[i]);
 
     }
 
