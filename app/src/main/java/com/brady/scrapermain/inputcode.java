@@ -1,5 +1,7 @@
 package com.brady.scrapermain;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +9,7 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -17,6 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import static java.security.AccessController.getContext;
 
 public class inputcode extends AppCompatActivity {
 
@@ -35,7 +40,7 @@ public class inputcode extends AppCompatActivity {
         EditText Geos = (EditText) findViewById(R.id.editText);
 
         //This function insures that all characters are uppercase
-        Geos.setFilters(new InputFilter[] {new InputFilter.AllCaps()});
+        Geos.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
     }
 // This function validates the form when search is pressed
 
@@ -46,13 +51,13 @@ public class inputcode extends AppCompatActivity {
         EditText Geos = (EditText) findViewById(R.id.editText);
         //EditText chan = (EditText) findViewById(R.id.editText5);
 
-        SinceTime   = Since.getText().toString();
+        SinceTime = Since.getText().toString();
         //untilTime   = until.getText().toString();
         GeosAddress = Geos.getText().toString();
         //channel     = chan.getText().toString();
 
 
-        Intent intent = new Intent(this, DisplayCode.class);
+        //Intent intent = new Intent(this, DisplayCode.class);
 
         //intent.putExtra("Since", SinceTime);
         //intent.putExtra("until", untilTime);
@@ -62,13 +67,21 @@ public class inputcode extends AppCompatActivity {
         // This will call receiveData() as a thread, POST the data
         // and then receive the resulting code.
         URL url = new URL("https://eddn.usgs.gov/cgi-bin/fieldtest.pl");
-        new receiveData(SinceTime, GeosAddress).execute(url);
+        new receiveData(this, SinceTime, GeosAddress).execute(url);
 
-        startActivity(intent);
+        //startActivity(intent);
 
-        }
+    }
 
+    public void passToDisplay(Context context, String response) {
 
+        Intent intent = new Intent(context, DisplayCode.class);
+        intent.putExtra("Response", response);
+        context.startActivity(intent);
+        //((Activity)context).finish();
+    }
+
+    /*
     // this function parses the header information
     void parseInfo(String data) {
         //String Test = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
@@ -183,6 +196,6 @@ public class inputcode extends AppCompatActivity {
         return value;
     }
 
-
+*/
 
 }

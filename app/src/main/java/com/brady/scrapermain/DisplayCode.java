@@ -25,12 +25,12 @@ public class DisplayCode extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String since = intent.getStringExtra("Since");
+        String response = intent.getStringExtra("Response");
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        MyAdapter adapter = new MyAdapter();
+        MyAdapter adapter = new MyAdapter(response);
         recyclerView.setAdapter(adapter);
 
         // use this setting to improve performance if you know that changes

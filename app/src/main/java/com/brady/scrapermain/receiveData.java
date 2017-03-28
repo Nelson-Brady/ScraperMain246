@@ -1,7 +1,9 @@
 package com.brady.scrapermain;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -28,8 +30,10 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
     String response = "";
     String SinceTime;
     String GeosAddress;
+    Context myContext;
 
-    receiveData(String since, String geos) {
+    receiveData(Context context, String since, String geos) {
+        this.myContext = context;
         SinceTime = since;
         GeosAddress = geos;
         }
@@ -118,6 +122,7 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
         // This is just printing it to the console for now.
         // We can pass the string elsewhere and decode it.
         inputcode input = new inputcode();
+        input.passToDisplay(myContext, response);
         //input.parseInfo(response);
     }
 }

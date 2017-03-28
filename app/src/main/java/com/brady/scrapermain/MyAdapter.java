@@ -16,11 +16,13 @@ import android.widget.ImageView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
-    MyAdapter(){
-
+    String response;
+    MyAdapter(String responseMsg){
+        response = responseMsg;
+        System.out.println("THIS IS THE RESPONSE" + response);
     }
 
-    private String[] titles = {"Chapter One",
+    private String[] titles = { response,
             "Chapter Two",
             "Chapter Three",
             "Chapter Four",
