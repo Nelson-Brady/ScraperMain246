@@ -17,28 +17,11 @@ import android.widget.ImageView;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     String response;
+    String[] titles = new String[8];
     MyAdapter(String responseMsg){
         response = responseMsg;
         System.out.println("THIS IS THE RESPONSE" + response);
     }
-
-    private String[] titles = { response,
-            "Chapter Two",
-            "Chapter Three",
-            "Chapter Four",
-            "Chapter Five",
-            "Chapter Six",
-            "Chapter Seven",
-            "Chapter Eight"};
-
-    private String[] details = {"Item One",
-            "Item Two",
-            "Item Three",
-            "Item Four",
-            "Item Five",
-            "Item Six",
-            "Item Seven",
-            "Item Eight"};
 
     private int[] images = {R.drawable.creeper,
             R.drawable.creeper,
@@ -62,7 +45,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-            itemImage = (ImageView) itemView.findViewById(R.id.item_image);
             itemTitle = (TextView) itemView.findViewById(R.id.item_title);
             itemDetail = (TextView) itemView.findViewById(R.id.item_detail);
 
@@ -90,9 +72,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int i) {
+
+        String[] titles = { response,
+                "Chapter Two",
+                "Chapter Three",
+                "Chapter Four",
+                "Chapter Five",
+                "Chapter Six",
+                "Chapter Seven",
+                "Chapter Eight"};
+
+        String[] details = {"Item One",
+                "Item Two",
+                "Item Three",
+                "Item Four",
+                "Item Five",
+                "Item Six",
+                "Item Seven",
+                "Item Eight"};
+
         viewHolder.itemTitle.setText(titles[i]);
         viewHolder.itemDetail.setText(details[i]);
-        viewHolder.itemImage.setImageResource(images[i]);
 
     }
 
