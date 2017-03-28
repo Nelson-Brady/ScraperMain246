@@ -47,22 +47,10 @@ public class inputcode extends AppCompatActivity {
     void checkForm(View view) throws IOException {
 
         EditText Since = (EditText) findViewById(R.id.editText3);
-        //EditText until = (EditText) findViewById(R.id.editText2);
         EditText Geos = (EditText) findViewById(R.id.editText);
-        //EditText chan = (EditText) findViewById(R.id.editText5);
 
         SinceTime = Since.getText().toString();
-        //untilTime   = until.getText().toString();
         GeosAddress = Geos.getText().toString();
-        //channel     = chan.getText().toString();
-
-
-        //Intent intent = new Intent(this, DisplayCode.class);
-
-        //intent.putExtra("Since", SinceTime);
-        //intent.putExtra("until", untilTime);
-        //intent.putExtra("geos", GeosAddress);
-        //intent.putExtra("chan", channel);
 
         // This will call receiveData() as a thread, POST the data
         // and then receive the resulting code.

@@ -66,8 +66,8 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
         try {
             client = (HttpURLConnection) url.openConnection();
             client.setRequestMethod("POST");
-            //client.setRequestProperty("DCPID","DD231226");  I don't think we need these
-            //client.setRequestProperty("SINCE","5");
+            //client.setRequestProperty("DCPID",DCPID);  I don't think we need these
+            //client.setRequestProperty("SINCE",SinceTime);
             client.setRequestProperty("multipart/form-data", "https://eddn.usgs.gov/fieldtest.html;charset=UTF-8");
             client.setDoInput(true);
             client.setDoOutput(true);

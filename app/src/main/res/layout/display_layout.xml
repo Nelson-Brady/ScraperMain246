@@ -19,28 +19,27 @@
         android:padding="16dp" >
 
 
-        <ImageView
+        <!--<ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:id="@+id/item_image"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="16dp"
-            />
+            />-->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/item_title"
-            android:layout_toRightOf="@+id/item_image"
             android:layout_alignParentTop="true"
             android:textSize="30sp" />
+        <!--android:layout_toRightOf="@+id/item_image"  same for next-->
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/item_detail"
-            android:layout_toRightOf="@+id/item_image"
             android:layout_below="@+id/item_title"/>
 
     </RelativeLayout>
