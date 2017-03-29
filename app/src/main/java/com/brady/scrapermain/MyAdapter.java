@@ -21,6 +21,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     String response;
     String[] titles = new String[8];
+    String[] details = new String[8];
     int numStrings;
 
     MyAdapter(String responseMsg){
@@ -29,6 +30,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         Elements Ptags = responseFile.select("p");
         numStrings = Ptags.size();
         titles = new String[numStrings - 2];
+        details = new String[numStrings - 2];
 
         for (int i = 2; i < numStrings; i++) {
             titles[i - 2] = Ptags.get(i).text();
@@ -56,9 +58,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    Snackbar.make(v, "Click detected on item " + position,
-                            Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    //Snackbar.make(v, "Click detected on item " + position,
+                            //Snackbar.LENGTH_LONG)
+                            //.setAction("Action", null).show();
+
                 }
             });
         }
@@ -85,7 +88,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 "Chapter Eight"};
                 */
 
-        String[] details = {"Item One",
+        /*String[] details = {"Item One",
                 "Item Two",
                 "Item Three",
                 "Item Four",
@@ -93,9 +96,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 "Item Six",
                 "Item Seven",
                 "Item Eight"};
+                */
 
         viewHolder.itemTitle.setText(titles[i]);
-        viewHolder.itemDetail.setText(details[i]);
+        //viewHolder.itemDetail.setText(details[i]);
 
     }
 
