@@ -52,9 +52,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             String JulianDay = data.substring(10, 13);
 
             JulianDay = year + JulianDay;
-            String Date = "DATE: " + JulianToDate(JulianDay);
+            String Date = JulianToDate(JulianDay);
             temp.setData(data);
             temp.setDate(Date);
+            temp.setSecs(data.substring(17, 19));
+            temp.setMins(data.substring(15, 17));
+            temp.setHour(data.substring(13, 15));
             searches[i - 2] = temp;
 
 
@@ -63,7 +66,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         //fill the display arrays based on the searches
         for (int i = 2; i < numStrings; i++) {
             details[i - 2] = searches[i - 2].getData();
-            titles[i - 2] = searches[i - 2].getDate();
+            titles[i - 2] = searches[i - 2].getDate() + " Hours: " + searches[i - 2].getHour()
+             + ":" + searches[i - 2].getMins();
         }
 
 
@@ -101,9 +105,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    //Snackbar.make(v, "Click detected on item " + position,
-                            //Snackbar.LENGTH_LONG)
-                            //.setAction("Action", null).show();
+                    Snackbar.make(v, "Click detected on item " + position,
+                            Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
 
                 }
             });
