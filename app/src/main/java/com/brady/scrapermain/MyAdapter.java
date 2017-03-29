@@ -4,7 +4,13 @@ package com.brady.scrapermain;
  * Created by ryani on 3/6/2017.
  */
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,6 +28,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     String response;
     String[] titles = new String[8];
     String[] details = new String[8];
+    ParsedData [] searches = new ParsedData[1];
     int numStrings;
 
     MyAdapter(String responseMsg){
@@ -31,11 +38,42 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         numStrings = Ptags.size();
         titles = new String[numStrings - 2];
         details = new String[numStrings - 2];
+        searches = new ParsedData[numStrings - 2];
 
         for (int i = 2; i < numStrings; i++) {
-            titles[i - 2] = Ptags.get(i).text();
+            ParsedData temp = new ParsedData();
+            String data = Ptags.get(i).text();
+            String year = data.substring(8, 10);
+            year = "20" + year;
+            String JulianDay = data.substring(10, 13);
+
+            JulianDay = year + JulianDay;
+            String Date = JulianToDate(JulianDay);
+            temp.setData(data);
+            temp.setDate(Date);
+            searches[i - 2] = temp;
+
+
         }
 
+        for (int i = 2; i < numStrings; i++) {
+            details[i - 2] = searches[i - 2].getData();
+            titles[i - 2] = searches[i - 2].getDate();
+        }
+
+
+    }
+    String JulianToDate(String julian) {
+        String dateStr = julian;
+        Calendar cal  = new GregorianCalendar();
+        cal.set(Calendar.YEAR,Integer.parseInt(dateStr.substring(0,4)));
+        cal.set(Calendar.DAY_OF_YEAR,Integer.parseInt(dateStr.substring(4)));
+        Date parsedDate  = cal.getTime();
+
+        Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateToString = formatter.format(parsedDate);
+
+        return dateToString;
 
     }
 
@@ -99,7 +137,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 */
 
         viewHolder.itemTitle.setText(titles[i]);
-        //viewHolder.itemDetail.setText(details[i]);
+        viewHolder.itemDetail.setText(details[i]);
 
     }
 
