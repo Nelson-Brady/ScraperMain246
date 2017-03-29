@@ -13,12 +13,28 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     String response;
     String[] titles = new String[8];
+    int numStrings;
+
     MyAdapter(String responseMsg){
         response = responseMsg;
+        Document responseFile = Jsoup.parse(response);
+        Elements Ptags = responseFile.select("p");
+        numStrings = Ptags.size();
+        titles = new String[numStrings - 2];
+
+        for (int i = 2; i < numStrings; i++) {
+            titles[i - 2] = Ptags.get(i).text();
+        }
+
+
     }
 
     // Provide a reference to the views for each data item
@@ -59,7 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int i) {
 
-        String[] titles = { response,
+        /*String[]itles = { response,
                 "Chapter Two",
                 "Chapter Three",
                 "Chapter Four",
@@ -67,6 +83,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 "Chapter Six",
                 "Chapter Seven",
                 "Chapter Eight"};
+                */
 
         String[] details = {"Item One",
                 "Item Two",
