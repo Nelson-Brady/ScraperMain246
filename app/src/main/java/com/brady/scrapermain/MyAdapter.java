@@ -23,16 +23,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         System.out.println("THIS IS THE RESPONSE" + response);
     }
 
-    private int[] images = {R.drawable.creeper,
-            R.drawable.creeper,
-            R.drawable.creeper,
-            R.drawable.creeper,
-            R.drawable.creeper,
-            R.drawable.creeper,
-            R.drawable.creeper,
-            R.drawable.creeper};
-
-
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder

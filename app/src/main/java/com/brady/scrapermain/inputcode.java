@@ -56,9 +56,6 @@ public class inputcode extends AppCompatActivity {
         // and then receive the resulting code.
         URL url = new URL("https://eddn.usgs.gov/cgi-bin/fieldtest.pl");
         new receiveData(this, SinceTime, GeosAddress).execute(url);
-
-        //startActivity(intent);
-
     }
 
     public void passToDisplay(Context context, String response) {
