@@ -68,57 +68,57 @@ public class inputcode extends AppCompatActivity {
     }
 
     void parseInfo(String test) {
-    //This string assumes user has removed HTML for us
-    //Also needs user to give us an integer for data size
+        //This string assumes user has removed HTML for us
+        //Also needs user to give us an integer for data size
 
         //data = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@/GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
 
-    String headerOnly = test.substring(0, 41);
-    String dataOnly = test.substring(41);
+        String headerOnly = test.substring(0, 41);
+        String dataOnly = test.substring(41);
 
-    //Display tests
+        //Display tests
         System.out.println("headerOnly: " + headerOnly);
         System.out.println("dataOnly: " + dataOnly);
 
 
-    //Puts each piece of data in array
-    //Length / dataBits should be count  This isn't quite right yet, due to battery level at end.
-    int dataBits = 3;
-    int count = dataOnly.length() / dataBits;
-    String[] data = new String[count];
-    int i;
-    int ss = 0;
+        //Puts each piece of data in array
+        //Length / dataBits should be count  This isn't quite right yet, due to battery level at end.
+        int dataBits = 3;
+        int count = dataOnly.length() / dataBits;
+        String[] data = new String[count];
+        int i;
+        int ss = 0;
         for (i = 0; i < count; i++) {
-        data[i] = dataOnly.substring(ss, ss + dataBits);
-        ss+=dataBits;
-    }
-
-
-    //Decode the data
-    int sumData = 0;
-    int index = dataBits;
-        for (i=0; i<count; i++){
-        for (int j = 0; j <dataBits; j++) {
-            char s = data[i].charAt(j);
-            index--;
-
-            int newValue = solveNum(s, index);
-            sumData += newValue;
-            //System.out.println("new: " + newValue);
-            //System.out.println("sum: " + sumData);
+            data[i] = dataOnly.substring(ss, ss + dataBits);
+            ss+=dataBits;
         }
-        System.out.println("sum: " + sumData);
-        sumData = 0;
-        index = dataBits;
-    }
 
-    //Print out battery level
-    int length = dataOnly.length();
-    String battery = dataOnly.substring(length - 2);
-    char b = battery.charAt(0);
-    float bat = solveNum(b, 0);
-    bat = (float) (bat * .3124 + 0.311);
-        System.out.println("Battery: " + bat);
+
+        //Decode the data
+        int sumData = 0;
+        int index = dataBits;
+        for (i=0; i<count; i++){
+            for (int j = 0; j <dataBits; j++) {
+                char s = data[i].charAt(j);
+                index--;
+
+                int newValue = solveNum(s, index);
+                sumData += newValue;
+                //System.out.println("new: " + newValue);
+                //System.out.println("sum: " + sumData);
+            }
+            System.out.println("sum: " + sumData);
+            sumData = 0;
+            index = dataBits;
+        }
+
+        //Print out battery level
+        int length = dataOnly.length();
+        String battery = dataOnly.substring(length - 2);
+        char b = battery.charAt(0);
+        float bat = solveNum(b, 0);
+        bat = (float) (bat * .3124 + 0.311);
+            System.out.println("Battery: " + bat);
 
 }
 
