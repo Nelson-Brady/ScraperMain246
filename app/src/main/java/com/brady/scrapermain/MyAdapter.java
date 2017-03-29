@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.ImageView;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
@@ -20,7 +19,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     String[] titles = new String[8];
     MyAdapter(String responseMsg){
         response = responseMsg;
-        System.out.println("THIS IS THE RESPONSE" + response);
     }
 
     // Provide a reference to the views for each data item
@@ -31,7 +29,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView itemTitle;
         public TextView itemDetail;
         public int currentItem;
-        public ImageView itemImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -40,10 +37,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
             itemView.setOnClickListener(new View.OnClickListener() {
 
-                int position = getAdapterPosition();
-
                 @Override
                 public void onClick(View v) {
+                    int position = getAdapterPosition();
                     Snackbar.make(v, "Click detected on item " + position,
                             Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();

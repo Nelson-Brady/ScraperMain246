@@ -59,22 +59,22 @@ public class inputcode extends AppCompatActivity {
     }
 
     public void passToDisplay(Context context, String response) {
-
         Intent intent = new Intent(context, DisplayCode.class);
         intent.putExtra("Response", response);
         context.startActivity(intent);
         //((Activity)context).finish();
+
+        //parseInfo(response);
     }
 
-
+    void parseInfo(String test) {
     //This string assumes user has removed HTML for us
     //Also needs user to give us an integer for data size
 
-    String Test = "DD23122617085012451G46+1NN175EXE00087`BCT@Fd@Fc@Fb@Fa@Fc@F`@F_@F^@F]@F]@F[@F[@Fm@Fl@Fk@Fj@Fi@Fh@Fh@Fg@Ff@Fe@Fd@Fc@T@@T@@TJj ";
+        //data = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@/GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
 
-
-    String headerOnly = Test.substring(0, 41);
-    String dataOnly = Test.substring(41);
+    String headerOnly = test.substring(0, 41);
+    String dataOnly = test.substring(41);
 
     //Display tests
         System.out.println("headerOnly: " + headerOnly);
@@ -157,7 +157,7 @@ public class inputcode extends AppCompatActivity {
         startActivity(intent);
 
 
-        //data = "DD23122608078152451G49+1NN175EXE00087`BCT@GU@GV@GU@GV@GW@GW@GW@GW@GX@GX@GX@/GX@GY@GW@GX@G[@GZ@GZ@GY@GZ@GZ@GZ@GZ@G@WR@Un@Uxj";
+
         /*String Address = data.substring(0, 8);
 
         String year = data.substring(8, 10);
