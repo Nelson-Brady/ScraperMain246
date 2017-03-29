@@ -33,13 +33,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     MyAdapter(String responseMsg){
         response = responseMsg;
+        //this code parses the html and puts each p tag in a list of elements
         Document responseFile = Jsoup.parse(response);
         Elements Ptags = responseFile.select("p");
+
+        //set all arrays based on size of list
         numStrings = Ptags.size();
         titles = new String[numStrings - 2];
         details = new String[numStrings - 2];
         searches = new ParsedData[numStrings - 2];
 
+        //fill the data in the searches array
         for (int i = 2; i < numStrings; i++) {
             ParsedData temp = new ParsedData();
             String data = Ptags.get(i).text();
@@ -48,7 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             String JulianDay = data.substring(10, 13);
 
             JulianDay = year + JulianDay;
-            String Date = JulianToDate(JulianDay);
+            String Date = "DATE: " + JulianToDate(JulianDay);
             temp.setData(data);
             temp.setDate(Date);
             searches[i - 2] = temp;
@@ -56,6 +60,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
         }
 
+        //fill the display arrays based on the searches
         for (int i = 2; i < numStrings; i++) {
             details[i - 2] = searches[i - 2].getData();
             titles[i - 2] = searches[i - 2].getDate();
