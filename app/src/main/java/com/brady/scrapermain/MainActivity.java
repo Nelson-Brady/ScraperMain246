@@ -13,6 +13,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        String detail = intent.getStringExtra("Detail");
+        System.out.println(detail);
     }
 
     public void newCode(View view) {

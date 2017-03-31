@@ -62,6 +62,7 @@ public class inputcode extends AppCompatActivity {
 
         Intent intent = new Intent(context, DisplayCode.class);
         intent.putExtra("Response", response);
+        //intent.putExtra("Context", context);
         context.startActivity(intent);
         //((Activity)context).finish();
     }

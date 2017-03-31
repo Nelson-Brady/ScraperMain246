@@ -30,7 +30,7 @@ public class DisplayCode extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        MyAdapter adapter = new MyAdapter(response);
+        MyAdapter adapter = new MyAdapter(response, this);
         recyclerView.setAdapter(adapter);
     }
 }

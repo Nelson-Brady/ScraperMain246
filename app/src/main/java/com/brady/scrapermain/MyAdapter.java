@@ -11,6 +11,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,12 +28,14 @@ import org.jsoup.select.Elements;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     String response;
+    Context context;
     String[] titles = new String[8];
     String[] details = new String[8];
     ParsedData [] searches = new ParsedData[1];
     int numStrings;
 
-    MyAdapter(String responseMsg){
+    MyAdapter(String responseMsg, Context context){
+        this.context = context;
         response = responseMsg;
         //this code parses the html and puts each p tag in a list of elements
         Document responseFile = Jsoup.parse(response);
@@ -86,6 +90,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     }
 
+    void backToMainActivity(int position) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.putExtra("Detail", details[position]);
+        context.startActivity(intent);
+    }
+
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -108,7 +118,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                     Snackbar.make(v, "Click detected on item " + position,
                             Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
-
+                    backToMainActivity(position);
                 }
             });
         }
