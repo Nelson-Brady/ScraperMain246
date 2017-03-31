@@ -29,13 +29,13 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
 
     String response = "";
     String SinceTime;
-    String GeosAddress;
+    String GoesAddress;
     Context myContext;
 
-    receiveData(Context context, String since, String geos) {
+    receiveData(Context context, String since, String goes) {
         this.myContext = context;
         SinceTime = since;
-        GeosAddress = geos;
+        GoesAddress = goes;
         }
 
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
@@ -58,7 +58,7 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
     public void getData() throws IOException {
 
         HashMap<String, String> params = new HashMap<>();
-        params.put("DCPID", GeosAddress);
+        params.put("DCPID", GoesAddress);
         params.put("SINCE", SinceTime);
 
         URL url = new URL("https://eddn.usgs.gov/cgi-bin/fieldtest.pl");

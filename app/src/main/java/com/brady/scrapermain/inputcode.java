@@ -27,7 +27,7 @@ public class inputcode extends AppCompatActivity {
 
     private String SinceTime;
     private String untilTime;
-    private String GeosAddress;
+    private String GoesAddress;
     private String channel;
 
 
@@ -37,32 +37,31 @@ public class inputcode extends AppCompatActivity {
         setContentView(R.layout.activity_inputcode);
         setTitle("New Input");
         // create object editText
-        EditText Geos = (EditText) findViewById(R.id.editText);
+        EditText Goes = (EditText) findViewById(R.id.editText);
 
         //This function insures that all characters are uppercase
-        Geos.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
+        Goes.setFilters(new InputFilter[]{new InputFilter.AllCaps()});
     }
-// This function validates the form when search is pressed
 
+    // This function validates the form when search is pressed
     void checkForm(View view) throws IOException {
 
         EditText Since = (EditText) findViewById(R.id.editText3);
-        EditText Geos = (EditText) findViewById(R.id.editText);
+        EditText Goes = (EditText) findViewById(R.id.editText);
 
         SinceTime = Since.getText().toString();
-        GeosAddress = Geos.getText().toString();
+        GoesAddress = Goes.getText().toString();
 
         // This will call receiveData() as a thread, POST the data
         // and then receive the resulting code.
         URL url = new URL("https://eddn.usgs.gov/cgi-bin/fieldtest.pl");
-        new receiveData(this, SinceTime, GeosAddress).execute(url);
+        new receiveData(this, SinceTime, GoesAddress).execute(url);
     }
 
     public void passToDisplay(Context context, String response) {
 
         Intent intent = new Intent(context, DisplayCode.class);
         intent.putExtra("Response", response);
-        //intent.putExtra("Context", context);
         context.startActivity(intent);
         //((Activity)context).finish();
     }

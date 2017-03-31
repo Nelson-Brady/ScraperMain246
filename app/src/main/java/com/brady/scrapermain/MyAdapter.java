@@ -1,7 +1,7 @@
 package com.brady.scrapermain;
 
 /**
- * Created by ryani on 3/6/2017.
+ * Created by Ryan Preston Walker on 3/6/2017.
  */
 
 import java.text.Format;
@@ -135,30 +135,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int i) {
-
-        /*String[]itles = { response,
-                "Chapter Two",
-                "Chapter Three",
-                "Chapter Four",
-                "Chapter Five",
-                "Chapter Six",
-                "Chapter Seven",
-                "Chapter Eight"};
-                */
-
-        /*String[] details = {"Item One",
-                "Item Two",
-                "Item Three",
-                "Item Four",
-                "Item Five",
-                "Item Six",
-                "Item Seven",
-                "Item Eight"};
-                */
-
         viewHolder.itemTitle.setText(titles[i]);
         viewHolder.itemDetail.setText(details[i]);
-
     }
 
     @Override

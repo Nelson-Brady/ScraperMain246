@@ -31,10 +31,11 @@ public class MainActivity extends AppCompatActivity {
     public void displayInfo() {
         Intent intent = getIntent();
         detail = intent.getStringExtra("Detail");
-        Log.w("String must be valid", detail);
         if (detail == null) {
             return;
         }
+        Log.w("String must be valid", detail);
+        System.out.println(detail);
         try {
             parseInfo(detail);
         } catch (Error e) {
@@ -44,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void parseInfo(String detail) {
+        //Received string should look something like the following:
         //String detail = "DD23122617085012451G46+1NN175EXE00087`BCT@Fd@Fc@Fb@Fa@Fc@F`@F_@F^@F]@F]@F[@F[@Fm@Fl@Fk@Fj@Fi@Fh@Fh@Fg@Ff@Fe@Fd@Fc@T@@T@@TJj ";
-
 
         String headerOnly = detail.substring(0, 41);
         String dataOnly = detail.substring(41);
