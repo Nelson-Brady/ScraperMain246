@@ -34,9 +34,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     ParsedData [] searches = new ParsedData[1];
     int numStrings;
 
-    MyAdapter(String responseMsg, Context context){
+    MyAdapter(String response, Context context){
         this.context = context;
-        response = responseMsg;
+        this.response = response;
+
         //this code parses the html and puts each p tag in a list of elements
         Document responseFile = Jsoup.parse(response);
         Elements Ptags = responseFile.select("p");
