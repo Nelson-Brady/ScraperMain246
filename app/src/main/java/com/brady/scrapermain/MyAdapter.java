@@ -23,13 +23,20 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+/**************************************************************************
+ * MyAdapter
+ *
+ * Adapter for RecyclerView.  Purifies the response string of unneeded HTML
+ * code and decodes the header.  The header contains the info for the date
+ * and time.
+ **************************************************************************/
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     String response;
     Context context;
-    String[] titles = new String[8];
-    String[] details = new String[8];
-    ParsedData [] searches = new ParsedData[1];
+    String[] titles = new String[8];    // initial array size; title display
+    String[] details = new String[8];   // initial array size; detail of display
+    ParsedData [] searches = new ParsedData[1]; // initial size
     int numStrings;
 
     MyAdapter(String response, Context context){
@@ -142,4 +149,3 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return titles.length;
     }
 }
-

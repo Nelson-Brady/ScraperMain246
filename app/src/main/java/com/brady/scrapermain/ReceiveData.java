@@ -19,23 +19,29 @@ import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 
-/**
- * Created by ryani on 3/10/2017.
- */
-
+/***************************************************************
+ * ReceiveData
+ *
+ * AsyncTask executed by InputCode.  Performs a POST request to
+ * the specified URL using the variables passed in from InputCode.
+ * OnPostExecute then passes the raw response string back to InputCode where
+ * it will create a DisplayCode with the string.
+ **************************************************************/
 public class ReceiveData extends AsyncTask<URL, Integer, Long> {
 
-    String response = "";
-    String SinceTime;
-    String GoesAddress;
-    Context myContext;
+    private String response = "";
+    private String SinceTime;
+    private String GoesAddress;
+    private Context myContext;
 
+    // Non-Default Constructor
     ReceiveData(Context context, String since, String goes) {
         this.myContext = context;
         SinceTime = since;
         GoesAddress = goes;
         }
 
+    // Appends the query string prior to posting
     private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
         StringBuilder feedback = new StringBuilder();
         boolean first = true;
@@ -93,7 +99,7 @@ public class ReceiveData extends AsyncTask<URL, Integer, Long> {
             e.printStackTrace();
         }
         finally {
-            if(client != null) // Make sure the connection is not null.
+            if (client != null) // Make sure the connection is not null.
                 client.disconnect();
         }
     }
@@ -116,9 +122,8 @@ public class ReceiveData extends AsyncTask<URL, Integer, Long> {
         System.out.println("Downloaded " + result + " bytes");
         System.out.println(response);
         // This is just printing it to the console for now.
-        // We can pass the string elsewhere and decode it.
+        // We will pass the string elsewhere and decode it.
         InputCode input = new InputCode();
         input.passToDisplay(myContext, response);
-        //input.parseInfo(response);
     }
 }

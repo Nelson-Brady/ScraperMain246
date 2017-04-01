@@ -1,16 +1,23 @@
 package com.brady.scrapermain;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 
-import java.io.IOException;
-
-//The main Activity
+/***************************************************
+ * MainActivity
+ *
+ * Entry point and driver of program.
+ * Initially, main will have nothing but a New Search
+ * button and an empty body.  After being called by
+ * MyAdapter, it will receive a data string from
+ * MyAdapter, decode it, and then display it.  The
+ * user of the app may then use the data as needed,
+ * hit the back arrow to decode a new string, or even
+ * start a new search and start the process all over again.
+ **************************************************/
 public class MainActivity extends AppCompatActivity {
 
     String decodedString = "start";
