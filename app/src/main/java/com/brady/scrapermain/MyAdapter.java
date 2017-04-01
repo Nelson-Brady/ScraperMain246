@@ -1,9 +1,5 @@
 package com.brady.scrapermain;
 
-/**
- * Created by Ryan Preston Walker on 3/6/2017.
- */
-
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,11 +30,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     String response;
     Context context;
-    String[] titles = new String[8];    // initial array size; title display
-    String[] details = new String[8];   // initial array size; detail of display
+    String[] titles = new String[8];    // initial array size; header display
+    String[] details = new String[8];   // initial array size; raw data display
     ParsedData [] searches = new ParsedData[1]; // initial size
     int numStrings;
 
+    // Non-Default Constructor
     MyAdapter(String response, Context context){
         this.context = context;
         this.response = response;
@@ -82,6 +79,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 
     }
+
+    // Calculates JulianDate
     String JulianToDate(String julian) {
         String dateStr = julian;
         Calendar cal  = new GregorianCalendar();
@@ -96,6 +95,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     }
 
+    // Explains itself.  Recreates MainActivity and passes in the selected string.
     void backToMainActivity(int position) {
         Intent intent = new Intent(context, MainActivity.class);
         intent.putExtra("Detail", details[position]);
@@ -116,6 +116,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             itemTitle = (TextView) itemView.findViewById(R.id.item_title);
             itemDetail = (TextView) itemView.findViewById(R.id.item_detail);
 
+            // Listens for a touch on the desired item.  It will proceed
+            // to call backToMainActivity.
             itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -138,12 +140,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         return viewHolder;
     }
 
+    // sets the text
     @Override
     public void onBindViewHolder(MyAdapter.ViewHolder viewHolder, int i) {
         viewHolder.itemTitle.setText(titles[i]);
         viewHolder.itemDetail.setText(details[i]);
     }
 
+    // Number of boxes displayed
     @Override
     public int getItemCount() {
         return titles.length;
