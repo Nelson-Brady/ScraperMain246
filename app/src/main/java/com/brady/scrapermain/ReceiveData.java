@@ -1,9 +1,7 @@
 package com.brady.scrapermain;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.view.View;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -25,14 +23,14 @@ import javax.net.ssl.HttpsURLConnection;
  * Created by ryani on 3/10/2017.
  */
 
-public class receiveData extends AsyncTask<URL, Integer, Long> {
+public class ReceiveData extends AsyncTask<URL, Integer, Long> {
 
     String response = "";
     String SinceTime;
     String GoesAddress;
     Context myContext;
 
-    receiveData(Context context, String since, String goes) {
+    ReceiveData(Context context, String since, String goes) {
         this.myContext = context;
         SinceTime = since;
         GoesAddress = goes;
@@ -66,8 +64,6 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
         try {
             client = (HttpURLConnection) url.openConnection();
             client.setRequestMethod("POST");
-            //client.setRequestProperty("DCPID",DCPID);  I don't think we need these
-            //client.setRequestProperty("SINCE",SinceTime);
             client.setRequestProperty("multipart/form-data", "https://eddn.usgs.gov/fieldtest.html;charset=UTF-8");
             client.setDoInput(true);
             client.setDoOutput(true);
@@ -121,7 +117,7 @@ public class receiveData extends AsyncTask<URL, Integer, Long> {
         System.out.println(response);
         // This is just printing it to the console for now.
         // We can pass the string elsewhere and decode it.
-        inputcode input = new inputcode();
+        InputCode input = new InputCode();
         input.passToDisplay(myContext, response);
         //input.parseInfo(response);
     }

@@ -13,7 +13,7 @@ import java.io.IOException;
 //The main Activity
 public class MainActivity extends AppCompatActivity {
 
-    String detail = "start";
+    String decodedString = "start";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,37 +24,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void newCode(View view) {
-        Intent intent = new Intent(this, inputcode.class);
+        Intent intent = new Intent(this, InputCode.class);
         startActivity(intent);
     }
 
     public void displayInfo() {
         Intent intent = getIntent();
-        detail = intent.getStringExtra("Detail");
-        if (detail == null) {
+        decodedString = intent.getStringExtra("Detail");
+        if (decodedString == null) {
+            Log.w("String must be valid", "Null String");
             return;
         }
-        Log.w("String must be valid", detail);
-        System.out.println(detail);
+        Log.d("String must be valid", decodedString);
         try {
-            parseInfo(detail);
+            parseInfo(decodedString);
         } catch (Error e) {
             e.printStackTrace();
             System.out.println("Unacceptable string passed to parseInfo()");
         }
     }
 
-    public void parseInfo(String detail) {
+    public void parseInfo(String decodedString) {
         //Received string should look something like the following:
-        //String detail = "DD23122617085012451G46+1NN175EXE00087`BCT@Fd@Fc@Fb@Fa@Fc@F`@F_@F^@F]@F]@F[@F[@Fm@Fl@Fk@Fj@Fi@Fh@Fh@Fg@Ff@Fe@Fd@Fc@T@@T@@TJj ";
+        //String decodedString = "DD23122617085012451G46+1NN175EXE00087`BCT@Fd@Fc@Fb@Fa@Fc@F`@F_@F^@F]@F]@F[@F[@Fm@Fl@Fk@Fj@Fi@Fh@Fh@Fg@Ff@Fe@Fd@Fc@T@@T@@TJj ";
 
-        String headerOnly = detail.substring(0, 41);
-        String dataOnly = detail.substring(41);
-
-        //Display tests
-        System.out.println("headerOnly: " + headerOnly);
-        System.out.println("dataOnly: " + dataOnly);
-
+        String headerOnly = decodedString.substring(0, 41);
+        String dataOnly = decodedString.substring(41);
 
         //Puts each piece of data in array
         //Length / dataBits should be count  This isn't quite right yet, due to battery level at end.
@@ -65,22 +60,20 @@ public class MainActivity extends AppCompatActivity {
         int ss = 0;
         for (i = 0; i < count; i++) {
             data[i] = dataOnly.substring(ss, ss + dataBits);
-            ss+=dataBits;
+            ss += dataBits;
         }
 
 
         //Decode the data
         int sumData = 0;
         int index = dataBits;
-        for (i=0; i< count; i++){
+        for (i=0; i < count; i++){
             for (int j = 0; j <dataBits; j++) {
                 char s = data[i].charAt(j);
                 index--;
 
                 int newValue = solveNum(s, index);
                 sumData += newValue;
-                //System.out.println("new: " + newValue);
-                //System.out.println("sum: " + sumData);
             }
             System.out.println("sum: " + sumData);
             sumData = 0;
