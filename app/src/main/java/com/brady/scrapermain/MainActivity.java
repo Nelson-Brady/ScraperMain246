@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 /***************************************************
  * MainActivity
@@ -72,17 +73,25 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Decode the data
+        TextView textView3 = (TextView)findViewById(R.id.textView3);
         int sumData = 0;
+        int newLine = 0;
         int index = dataBits;
-        for (i=0; i < count; i++){
-            for (int j = 0; j <dataBits; j++) {
+        for (i = 0; i < count; i++){
+            for (int j = 0; j < dataBits; j++) {
                 char s = data[i].charAt(j);
                 index--;
 
                 int newValue = solveNum(s, index);
                 sumData += newValue;
             }
-            System.out.println("sum: " + sumData);
+
+            textView3.append("sum: " + sumData + ", ");
+            newLine++;
+            if (newLine == 2) {
+                textView3.append("\n");
+                newLine = 0;
+            }
             sumData = 0;
             index = dataBits;
         }
@@ -93,12 +102,11 @@ public class MainActivity extends AppCompatActivity {
         char b = battery.charAt(0);
         float bat = solveNum(b, 0);
         bat = (float) (bat * .3124 + 0.311);
-        System.out.println("Battery: " + bat);
-
+        textView3.append("Battery: " + bat);
+        textView3.append("\n");
     }
 
     private static int solveNum(char s, int index) {
-        //How to decode each piece of data???
 
         //int ascii = s.charAt(0);
         int ascii = s;

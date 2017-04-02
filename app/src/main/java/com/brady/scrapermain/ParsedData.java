@@ -1,9 +1,5 @@
 package com.brady.scrapermain;
 
-/**
- * Created by Spencer on 3/22/17.
- */
-
 public class ParsedData {
 
     private String Address;
