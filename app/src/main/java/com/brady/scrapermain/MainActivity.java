@@ -1,6 +1,9 @@
 package com.brady.scrapermain;
 
 import android.content.Intent;
+import android.icu.text.DecimalFormat;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     String decodedString = "start";
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void displayInfo() {
         Intent intent = getIntent();
         decodedString = intent.getStringExtra("Detail");
@@ -52,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void parseInfo(String decodedString) {
         //Received string should look something like the following:
         //String decodedString = "DD23122617085012451G46+1NN175EXE00087`BCT@Fd@Fc@Fb@Fa@Fc@F`@F_@F^@F]@F]@F[@F[@Fm@Fl@Fk@Fj@Fi@Fh@Fh@Fg@Ff@Fe@Fd@Fc@T@@T@@TJj ";
@@ -86,12 +92,16 @@ public class MainActivity extends AppCompatActivity {
                 sumData += newValue;
             }
 
-            textView3.append("sum: " + sumData + ", ");
-            newLine++;
+            float fData = sumData;
+            fData /= 100;
+            DecimalFormat df = new DecimalFormat("#.##");
+            df.format(fData);
+            textView3.append("Reading: " + fData + "\n");
+            /*newLine++;
             if (newLine == 2) {
                 textView3.append("\n");
                 newLine = 0;
-            }
+            }*/
             sumData = 0;
             index = dataBits;
         }
