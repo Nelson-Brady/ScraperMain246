@@ -96,12 +96,12 @@ public class MainActivity extends AppCompatActivity {
             fData /= 100;
             DecimalFormat df = new DecimalFormat("#.##");
             df.format(fData);
-            textView3.append("Reading: " + fData + "\n");
-            /*newLine++;
+            textView3.append("Reading: " + fData + ", ");
+            newLine++;
             if (newLine == 2) {
                 textView3.append("\n");
                 newLine = 0;
-            }*/
+            }
             sumData = 0;
             index = dataBits;
         }
